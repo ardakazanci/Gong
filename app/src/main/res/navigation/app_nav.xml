@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@navigation/list_detail_nav"
+    app:startDestination="@id/list_detail_nav"
     android:id="@+id/app_nav">
 
     <include app:graph="@navigation/list_detail_nav" />

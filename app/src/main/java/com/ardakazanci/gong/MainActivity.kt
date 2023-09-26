@@ -7,7 +7,9 @@ import com.ardakazanci.gong.core.navigation.NavigationFlow
 import com.ardakazanci.gong.core.navigation.Navigator
 import com.ardakazanci.gong.core.navigation.ToNavigate
 import com.ardakazanci.gong.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ToNavigate {
 
     lateinit var binding: ActivityMainBinding
@@ -25,8 +27,7 @@ class MainActivity : AppCompatActivity(), ToNavigate {
     private fun setupNavigation() {
         val navHostFragment =
             supportFragmentManager
-                .findFragmentById(R.id.app_nav) as NavHostFragment
-        navHostFragment.navController.setGraph(R.navigation.app_nav)
+                .findFragmentById(R.id.activity_main_nav_host_fragment) as NavHostFragment
         navigator = Navigator().apply {
             navController = navHostFragment.navController
         }

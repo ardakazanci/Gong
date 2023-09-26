@@ -11,12 +11,12 @@ apply from: "$rootDir/buildSystem/dependencies.gradle"
 
 android {
     namespace 'com.ardakazanci.gong'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.ardakazanci.gong"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -63,4 +63,16 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "com.google.code.gson:gson:$gson"
     implementation "androidx.recyclerview:recyclerview:$recylerview"
+    // Test
+    testImplementation("junit:junit:$junit")
+    testImplementation("io.mockk:mockk:$mock")
+    testImplementation("org.robolectric:robolectric:$robolectric")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test")
+    testImplementation("androidx.test.ext:junit-ktx:$junit_ktx")
+    testImplementation("androidx.test:core:$test_core")
+    testImplementation("androidx.arch.core:core-testing:$arch_core")
+    // Android Test
+    androidTestImplementation("androidx.test.ext:junit:$junit_ktx")
+    androidTestImplementation("androidx.test.ext:junit-ktx:$junit_ktx")
+    androidTestImplementation("androidx.test:rules:$rules")
 }

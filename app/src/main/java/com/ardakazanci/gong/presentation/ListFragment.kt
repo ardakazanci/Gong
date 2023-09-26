@@ -2,6 +2,7 @@ package com.ardakazanci.gong.presentation
 
 import android.util.Log
 import androidx.fragment.app.viewModels
+import com.ardakazanci.gong.R
 import com.ardakazanci.gong.core.presentation.MotherFragment
 import com.ardakazanci.gong.core.presentation.MotherViewModel
 import com.ardakazanci.gong.databinding.ListFragmentBinding
@@ -23,16 +24,15 @@ class ListFragment : MotherFragment<ListFragmentBinding>(ListFragmentBinding::in
     override fun setupView() {
         binding.rcList.apply {
             adapter = listAdapter
+            addItemDecoration(CustomDivider(requireContext(), R.drawable.custom_divider))
         }
 
         vm.uiStateData.observedNonNull(viewLifecycleOwner) { state ->
             when (state) {
                 is ListUiState.State.GetList -> {
-                    Log.e("TAG","Data ${state.list}")
+                    listAdapter.submitList(state.list)
                 }
             }
-
         }
-
     }
 }

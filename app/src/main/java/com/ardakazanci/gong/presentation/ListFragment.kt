@@ -23,6 +23,10 @@ class ListFragment : MotherFragment<ListFragmentBinding>(ListFragmentBinding::in
         }
     }
 
+    companion object{
+        const val DELAY = 1500L
+    }
+
     private val vm: ListViewModel by viewModels()
 
     override fun mViewModel(): MotherViewModel = vm
@@ -50,7 +54,7 @@ class ListFragment : MotherFragment<ListFragmentBinding>(ListFragmentBinding::in
                 vm.loading(true)
                 val searchTerm = s.toString().lowercase(Locale.ROOT)
                 takeIf { searchTerm.isNotEmpty() }?.run {
-                    SearchHelper.debounce<Unit>(1500,viewLifecycleOwner.lifecycleScope){
+                    SearchHelper.debounce<Unit>(DELAY,viewLifecycleOwner.lifecycleScope){
                         val filteredList =
                             vm.filteredItems.value?.filter { item ->
                                 item.name.lowercase(Locale.ROOT).contains(

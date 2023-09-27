@@ -24,6 +24,7 @@ class DetailViewModel @Inject constructor(
     override fun invokeAction(action: DetailUiState.Action) {
         when (action) {
             is DetailUiState.Action.GetDetail -> getDetail(action.id)
+            is DetailUiState.Action.GetPosition -> getPositions(action.id)
         }
     }
 
@@ -38,19 +39,15 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-    private fun getPositions(){
+    private fun getPositions(id: String){
         viewModelScope.launch {
             action(
-                getPositionsUseCase.invoke(Unit),
+                getPositionsUseCase.invoke(id),
                 loading = true
             ) {
                 _uiStateData.value = DetailUiState.State.GetPositions(it)
             }
         }
-    }
-
-    init {
-        getPositions()
     }
 
 }

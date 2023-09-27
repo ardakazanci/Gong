@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 interface MainRepository {
     fun getList(): Flow<DomainResult<SatelliteListDomainModel>>
     fun getDetail(id:String): Flow<DomainResult<SatelliteDetailDomainModel.SatelliteDetailDomainModelItem>>
-    fun getPositions(): Flow<DomainResult<PositionsDomainModel.ListCoreDomainModel>>
+    fun getPositions(id:String): Flow<DomainResult<PositionsDomainModel.ListCoreDomainModel.Position>>
 }

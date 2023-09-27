@@ -20,7 +20,7 @@ class DetailFragment : MotherFragment<DetailFragmentBinding>(DetailFragmentBindi
         val idValue = args.idValue
         val nameValue = args.name
         vm.invokeAction(DetailUiState.Action.GetDetail(idValue))
-
+        vm.invokeAction(DetailUiState.Action.GetPosition(idValue))
         vm.uiStateData.observedNonNull(viewLifecycleOwner) { state ->
             when (state) {
                 is DetailUiState.State.GetDetail -> {
@@ -33,7 +33,7 @@ class DetailFragment : MotherFragment<DetailFragmentBinding>(DetailFragmentBindi
                 }
                 is DetailUiState.State.GetPositions -> {
                     with(binding){
-                        lastPositionValue.text = state.positions.positions.first().posX.toString().plus("${state.positions.positions.first().posY}")
+                        lastPositionValue.text = state.positions.posX.toString().plus("${state.positions.posY}")
                     }
                 }
             }

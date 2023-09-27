@@ -25,8 +25,6 @@ class MainRepositoryImpl @Inject constructor(
     private val provideGson: Gson
 ) : MainRepository {
 
-
-
     override fun getList(): Flow<DomainResult<SatelliteListDomainModel>> = channelFlow {
         send(DomainResult.Progress())
         try {
@@ -54,13 +52,16 @@ class MainRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getPositions(): Flow<DomainResult<PositionsDomainModel.ListCoreDomainModel>> = channelFlow {
-        send(DomainResult.Progress())
+    override fun getPositions(id: String): Flow<DomainResult<PositionsDomainModel.ListCoreDomainModel.Position>> = channelFlow {
         try {
             val positions = provideGson.fromJson(jsonDataSource.getPositions(),PositionsDataModel::class.java)
-            positions.list?.forEach {
+            val filteredValue = positions.list?.filter { it.id.toString() == id }?.first()?.positions
+            filteredValue?.forEach {
+                send(DomainResult.Progress())
                 delay(3000L)
-                send(DomainResult.Succeed(Result.success(it.cast())))
+                it?.let {position ->
+                    send(DomainResult.Succeed(Result.success(position.cast())))
+                }
             }
         }catch (e: Exception){
             send(DomainResult.Succeed(Result.failure(e)))

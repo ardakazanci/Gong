@@ -14,10 +14,11 @@ sealed class DetailUiState {
 
     sealed class State {
         data class GetDetail(var detail: SatelliteDetailDomainModel.SatelliteDetailDomainModelItem) : State()
-        data class GetPositions(var positions: PositionsDomainModel.ListCoreDomainModel) : State()
+        data class GetPositions(var positions: PositionsDomainModel.ListCoreDomainModel.Position) : State()
     }
 
     sealed class Action {
         data class GetDetail(val id: String) : Action()
+        data class GetPosition(val id: String) : Action()
     }
 }

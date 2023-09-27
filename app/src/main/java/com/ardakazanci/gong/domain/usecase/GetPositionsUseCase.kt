@@ -10,6 +10,6 @@ import javax.inject.Inject
 
 class GetPositionsUseCase @Inject constructor(
     private val repository: MainRepository
-) : BaseUseCase<Unit, PositionsDomainModel.ListCoreDomainModel>() {
-    override fun invoke(input: Unit): Flow<DomainResult<PositionsDomainModel.ListCoreDomainModel>> = repository.getPositions()
+) : BaseUseCase<String, PositionsDomainModel.ListCoreDomainModel.Position>() {
+    override fun invoke(input: String): Flow<DomainResult<PositionsDomainModel.ListCoreDomainModel.Position>> = repository.getPositions(input)
 }

@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ardakazanci.gong.R
+import com.ardakazanci.gong.core.presentation.setOnThrottledClickListener
 import com.ardakazanci.gong.databinding.ItemListBinding
 import com.ardakazanci.gong.domain.SatelliteListDomainModel
 
-class ListAdapter(private val onClick: (String) -> Unit) :
+class ListAdapter(private val onClick: (String,String) -> Unit) :
     ListAdapter<SatelliteListDomainModel.SatelliteListDomainModelItem, ListViewHolder>(
         ListDiffCallBack()
     ) {
@@ -47,10 +48,10 @@ class ListViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(
         data: SatelliteListDomainModel.SatelliteListDomainModelItem,
-        onClick: (String) -> Unit
+        onClick: (String,String) -> Unit
     ) {
         with(binding) {
-            root.setOnClickListener { onClick.invoke(data.id.toString()) }
+            root.setOnThrottledClickListener { onClick.invoke(data.id.toString(),data.name) }
             with(binding) {
                 title.text = data.name
                 takeIf { data.active }?.run {

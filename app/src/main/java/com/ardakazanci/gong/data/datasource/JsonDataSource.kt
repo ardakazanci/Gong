@@ -6,10 +6,19 @@ import javax.inject.Inject
 class JsonDataSource @Inject constructor(
     private val context: Context
 ) {
-    suspend fun getList(): String {
-        val listString = context.assets.open("satellite_list.json")
+    fun getList(): String {
+        return context.assets.open("satellite_list.json")
             .bufferedReader()
             .use { it.readText() }
-        return listString
+    }
+
+    fun getDetail(): String {
+        return context.assets.open("satellite_detail.json").bufferedReader()
+            .use { it.readText() }
+    }
+
+    fun getPositions() : String{
+        return context.assets.open("positions.json").bufferedReader()
+            .use { it.readText() }
     }
 }

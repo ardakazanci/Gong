@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.ardakazanci.gong.R
 import com.ardakazanci.gong.core.SearchHelper
+import com.ardakazanci.gong.core.navigation.NavigationFlow
 import com.ardakazanci.gong.core.presentation.MotherFragment
 import com.ardakazanci.gong.core.presentation.MotherViewModel
 import com.ardakazanci.gong.databinding.ListFragmentBinding
@@ -17,8 +18,8 @@ import java.util.Locale
 class ListFragment : MotherFragment<ListFragmentBinding>(ListFragmentBinding::inflate) {
 
     private val listAdapter: ListAdapter by lazy {
-        ListAdapter { id ->
-
+        ListAdapter { id,name ->
+            navigate(NavigationFlow.DetailFlow(id,name))
         }
     }
 

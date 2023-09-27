@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/sp24"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Sample" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp2"
+        android:textAlignment="center"
+        android:textSize="@dimen/sp14"
+        android:textColor="@android:color/darker_gray"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/groupHeightMass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="01.12.2012" />
+
+
+    <LinearLayout
+        android:id="@+id/groupHeightMass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/costGroup"
+        app:layout_constraintTop_toBottomOf="@+id/date">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/height_mass"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="61dp" />
+
+        <TextView
+            android:id="@+id/heightMassValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="158dp"
+            tools:layout_editor_absoluteY="61dp"
+            tools:text="110/113600" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/costGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/lastPositionGroup"
+        app:layout_constraintTop_toBottomOf="@+id/groupHeightMass">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cost"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/costValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="8.300.000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lastPositionGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp8"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/costGroup">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lastposition"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lastPositionValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="(0.8,0.9)" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

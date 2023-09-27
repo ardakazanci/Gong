@@ -67,6 +67,7 @@ class ListFragment : MotherFragment<ListFragmentBinding>(ListFragmentBinding::in
                 takeIf { searchTerm.isEmpty() }?.run {
                     vm.filteredItems.value = vm.originalItems.value
                     listAdapter.submitList(vm.originalItems.value)
+                    vm.loading(false)
                 }
             }
 

@@ -51,7 +51,7 @@ abstract class MotherViewModel : ViewModel() {
         }
     }
 
-    private fun loading(active: Boolean) {
+    fun loading(active: Boolean) {
         viewModelScope.launch {
             _loading.value = active
         }

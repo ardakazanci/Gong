@@ -47,6 +47,7 @@ class ListFragment : MotherFragment<ListFragmentBinding>(ListFragmentBinding::in
 
         binding.searchEdt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
+                vm.loading(true)
                 val searchTerm = s.toString().lowercase(Locale.ROOT)
                 takeIf { searchTerm.isNotEmpty() }?.run {
                     SearchHelper.debounce<Unit>(1500,viewLifecycleOwner.lifecycleScope){
@@ -59,6 +60,7 @@ class ListFragment : MotherFragment<ListFragmentBinding>(ListFragmentBinding::in
                                 )
                             }
                         vm.filteredItems.value = filteredList
+                        vm.loading(false)
                     }.invoke(Unit)
                 }
 
